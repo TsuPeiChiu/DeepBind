@@ -594,6 +594,7 @@ def _update_metrics(outdir, targetname, groupname, rowidx, z, y, aucthresh=(.5,.
 
     # Load current metrics
     metrics = deepity.load_metrics(modeldir+"/metrics.txt")
+     
     metrics[groupname] = deepity.calc_metrics(z, y, aucthresh=aucthresh)
     deepity.save_metrics(modeldir+"/metrics.txt", metrics)
 
@@ -610,6 +611,7 @@ def _update_metrics(outdir, targetname, groupname, rowidx, z, y, aucthresh=(.5,.
             if y is not None:
                 f.write(yfmt % y[i])
             f.write("\n")"""
+
 
 def disable_softmax():
     kangaroo.globals.flags.push("disable_softmax",True)
