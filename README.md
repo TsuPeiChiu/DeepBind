@@ -147,4 +147,18 @@ Using the SELEX cycles selected by Aipanahi et al.:
 
    python deepbind_train_selex.py calib,train,test,report
    >> out/selex/best/report/index.html
+   
+   
+
+TRAINING TFs ON SELEX-seq
+------------------------
+
+Train TF models on SELEX-seq sequences.
+
+   python deepbind_train_selex_seq.py calib,train,test,report max
+   
+   python deepbind_train_selex_seq.py calib,train,test,report mef2b
+   
+   python deepbind_train_selex_seq.py calib,train,test,report p53
+   
 
