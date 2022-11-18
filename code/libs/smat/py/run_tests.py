@@ -50,8 +50,8 @@ if args.backend is not None:
 if args.device is not None:
     smat.set_backend_options(device=args.device)
 
-print smat.get_backend_info()
-print smat.get_heap_status()
+print(smat.get_backend_info())
+print(smat.get_heap_status())
 
 if args.perf:
     smat.tests.perftest()

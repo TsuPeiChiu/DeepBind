@@ -63,7 +63,10 @@
     const unsigned gdy = 1; ((void)gdy);
 #endif
 
-#ifdef __CUDACC__
+//#ifdef __CUDACC__
+#if !defined(__CUDA_ARCH__) || __CUDA_ARCH__ >= 600
+
+#else
 SM_DEVICE_INLINE double atomicAdd(double* address, double val)
 {
 	unsigned long long* address_as_ull = (unsigned long long*)address;

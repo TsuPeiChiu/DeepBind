@@ -157,7 +157,8 @@ def calc_metrics(z, y, aucthresh=(0.5,0.5)):
     y = y[M]
     metric["pearson.r"],  metric["pearson.p"]  = scipy.stats.pearsonr(z,y)
     metric["spearman.r"], metric["spearman.p"] = scipy.stats.spearmanr(z,y)
-
+    metric["r-squared_1"] = np.square(metric["pearson.r"])
+    metric["r-squared_2"] = _calc_rsquared(z, y) 
 
     if np.any(y < aucthresh[0]) and np.any(y >= aucthresh[1]):
         # Compute percentiles of positive and negative sets:
@@ -186,6 +187,13 @@ def calc_metrics(z, y, aucthresh=(0.5,0.5)):
 
 #####################################################################
 
+def _calc_rsquared(z, y):
+    ss_res = np.sum(np.square(z - y))
+    ss_tot = np.sum(np.square(z - np.mean(z)))
+        
+    return (1-ss_res/(ss_tot+np.finfo(float).eps))
+
+#####################################################################
 
 def _calc_performance_stats(cost, batches):
     Z = []
